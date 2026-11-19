@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HandsUp Fitness Club | Запись и Профиль</title>
+    <meta name="description" content="Запись на тренировку и создание личного кабинета в HandsUp Fitness Club.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/final.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <a class="visually-hidden-focusable btn btn-primary position-absolute top-0 start-0 m-2 z-3" href="#content">Перейти к содержимому</a>
+
+    <nav class="navbar navbar-expand-xxl bg-body-tertiary sticky-top border-bottom" aria-label="Основная навигация">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">HandsUp <span class="text-brand">Fitness</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-xl-0 gap-xl-1">
+                    <li class="nav-item"><a id="nav-home" class="nav-link rounded px-xl-3 fw-semibold" href="index.html">Главная</a></li>
+                    <li class="nav-item"><a id="nav-pricing" class="nav-link rounded px-xl-3 fw-semibold" href="pricing.html">Абонементы</a></li>
+                    <li class="nav-item"><a id="nav-schedule" class="nav-link rounded px-xl-3 fw-semibold" href="schedule.html">Расписание</a></li>
+                    <li class="nav-item"><a id="nav-branches" class="nav-link rounded px-xl-3 fw-semibold" href="branches.html">Филиалы</a></li>
+                    <li class="nav-item"><a id="nav-trainers" class="nav-link rounded px-xl-3 fw-semibold" href="trainers.html">Тренеры</a></li>
+                    <li class="nav-item"><a id="nav-profile" class="nav-link active rounded px-xl-3 fw-semibold" aria-current="page" href="profile.html">Запись / Профиль</a></li>
+                    <li class="nav-item"><a id="nav-signup" class="nav-link rounded px-xl-2 fw-semibold" href="signup.html">Регистрация</a></li>
+                    <li class="nav-item"><a id="nav-login" class="nav-link rounded px-xl-2 fw-semibold" href="login.html">Войти</a></li>
+                    <li class="nav-item nav-tools ms-xl-2 mt-2 mt-xl-0">
+                        <button type="button" id="themeToggle" class="btn btn-outline-primary btn-sm" aria-label="Переключить тему: день / ночь" title="День / Ночь">☀️</button>
+                        <button type="button" id="soundToggle" class="btn btn-outline-primary btn-sm" aria-label="Включить или выключить звуки" title="Звук" aria-pressed="true">🔊</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="content" class="container px-3 py-4 py-lg-5 mt-lg-4">
+
+        <h1 id="page-heading" class="text-center text-brand mb-2">Запись и личный кабинет</h1>
+        <p class="text-center text-body-secondary mb-4">Создайте аккаунт через регистрацию и вход, а ниже при желании отправьте заявку на тренировку. Поля со звёздочкой обязательны.</p>
+
+        <!-- FINAL: Session-bound profile. The bookings below are preserved from Assignment 6. -->
+        <section id="account-panel" class="card p-3 p-md-4 mb-4" aria-labelledby="account-title">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+                <h2 id="account-title" class="h4 text-brand mb-0">Мой аккаунт</h2>
+                <button id="logout-btn" class="btn btn-outline-primary btn-sm" type="button" hidden>Выйти из аккаунта</button>
+            </div>
+            <div id="account-guest" class="account-guest">
+                <p class="text-body-secondary mb-2">Вы пока не вошли. Создайте аккаунт или войдите, чтобы увидеть свои данные.</p>
+                <a id="profile-login-link" class="btn btn-primary me-2" href="login.html">Войти</a>
+                <a id="profile-signup-link" class="btn btn-outline-primary" href="signup.html">Регистрация</a>
+            </div>
+            <div id="account-details" hidden>
+                <p class="mb-2">Рады видеть вас, <strong id="profile-display-name"></strong>!</p>
+                <dl class="row mb-0 account-grid">
+                    <dt class="col-sm-3">Имя</dt><dd class="col-sm-9" id="profile-name"></dd>
+                    <dt class="col-sm-3">Email</dt><dd class="col-sm-9" id="profile-email"></dd>
+                    <dt class="col-sm-3">Телефон</dt><dd class="col-sm-9" id="profile-phone"></dd>
+                </dl>
+                <p class="small text-body-secondary mt-2 mb-0">Демонстрационный аккаунт хранится в этом браузере через localStorage.</p>
+            </div>
+        </section>
+
+        <h2 id="booking-title" class="h4 text-center text-brand mb-3">Заявка на тренировку</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
+                <!-- A4 Task 1: form validation (rules live in js/main.js) -->
+                <form id="bookingForm" class="card p-3 p-sm-4" novalidate>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">Ваше имя *</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Например, Айгерим" autocomplete="name" data-validate="name">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="text" inputmode="email" class="form-control" id="email" name="email" placeholder="example@mail.com" autocomplete="email" data-validate="email">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="col-12">
+                            <label for="phone" class="form-label">Номер телефона *</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="phone-prefix">+7</span>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="(7XX) XXX-XX-XX" inputmode="numeric" aria-describedby="phone-prefix" autocomplete="tel-national" data-validate="phone">
+                            </div>
+                            <div class="invalid-feedback"></div>
+                            <div class="field-hint">Ровно 10 цифр после +7, формат подставляется автоматически.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="password" class="form-label">Пароль *</label>
+                            <div class="password-wrap">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Минимум 8 символов" autocomplete="new-password" data-validate="password">
+                                <button type="button" class="password-toggle" data-toggle-for="password" aria-label="Показать пароль">👁</button>
+                            </div>
+                            <div class="invalid-feedback"></div>
+                            <div class="strength" aria-hidden="true"><div class="strength-bar" id="strengthBar"></div></div>
+                            <div class="strength-label" id="strengthLabel">Надёжность пароля</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="confirmPassword" class="form-label">Повторите пароль *</label>
+                            <div class="password-wrap">
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Ещё раз пароль" autocomplete="new-password" data-validate="confirm">
+                                <button type="button" class="password-toggle" data-toggle-for="confirmPassword" aria-label="Показать пароль">👁</button>
+                            </div>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="branch" class="form-label">Выберите филиал</label>
+                            <select class="form-select" id="branch" name="branch">
+                                <option value="handsup">Филиал «HandsUp»</option>
+                                <option value="handsup-big">Филиал «HandsUp Big»</option>
+                            </select>
+                        </div>
+                        <fieldset class="col-md-6">
+                            <legend class="form-label fs-6">Тип тренировки</legend>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="kind" id="kind-trial" value="trial" checked>
+                                <label class="form-check-label" for="kind-trial">Пробная</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="kind" id="kind-personal" value="personal">
+                                <label class="form-check-label" for="kind-personal">Персональная</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="kind" id="kind-group" value="group">
+                                <label class="form-check-label" for="kind-group">Групповая</label>
+                            </div>
+                        </fieldset>
+                        <div class="col-12">
+                            <label for="message" class="form-label">Дополнительные пожелания</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Напишите ваши цели или вопросы..." data-validate="message"></textarea>
+                            <div class="invalid-feedback"></div>
+                            <div class="char-counter" id="messageCounter">0 / 300</div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="reminders" name="reminders">
+                                <label class="form-check-label" for="reminders">Напомнить о тренировке за день</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="agree" name="agree" data-validate="agree">
+                                <label class="form-check-label" for="agree">Согласен на обработку персональных данных *</label>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-grid gap-2 d-sm-flex justify-content-sm-end">
+                            <button id="booking-reset-btn" type="reset" class="btn btn-outline-primary">Очистить</button>
+                            <button id="booking-submit-btn" type="submit" class="btn btn-primary btn-lg">Отправить заявку</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Form result block -->
+                <div id="form-result" class="mt-3" role="status"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-body-tertiary border-top mt-auto py-4 text-center text-body-secondary small">
+        <div class="container px-sm-2">
+            <p class="mb-1">Разработчики: Shyndaly Bagnyr, Aitzhanova Aigerim, Shamshidin Aruzhan | Группа: SE-2502</p>
+            <p class="mb-1">Демо Media Queries (без Bootstrap): <a href="media-typography.html">Типографика</a> и <a href="media-cards.html">Карточки</a></p>
+            <p class="mb-0">&copy; 2026 HandsUp Fitness Club.</p>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/final.js" defer></script>
+</body>
+</html> 

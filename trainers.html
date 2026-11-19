@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HandsUp Fitness Club | Тренеры</title>
+    <meta name="description" content="Тренеры HandsUp Fitness Club: поиск, фильтр по направлению и рейтинг.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/final.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <a class="visually-hidden-focusable btn btn-primary position-absolute top-0 start-0 m-2 z-3" href="#content">Перейти к содержимому</a>
+
+    <nav class="navbar navbar-expand-xxl bg-body-tertiary sticky-top border-bottom" aria-label="Основная навигация">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">HandsUp <span class="text-brand">Fitness</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-xl-0 gap-xl-1">
+                    <li class="nav-item"><a id="nav-home" class="nav-link rounded px-xl-3 fw-semibold" href="index.html">Главная</a></li>
+                    <li class="nav-item"><a id="nav-pricing" class="nav-link rounded px-xl-3 fw-semibold" href="pricing.html">Абонементы</a></li>
+                    <li class="nav-item"><a id="nav-schedule" class="nav-link rounded px-xl-3 fw-semibold" href="schedule.html">Расписание</a></li>
+                    <li class="nav-item"><a id="nav-branches" class="nav-link rounded px-xl-3 fw-semibold" href="branches.html">Филиалы</a></li>
+                    <li class="nav-item"><a id="nav-trainers" class="nav-link active rounded px-xl-3 fw-semibold" aria-current="page" href="trainers.html">Тренеры</a></li>
+                    <li class="nav-item"><a id="nav-profile" class="nav-link rounded px-xl-3 fw-semibold" href="profile.html">Запись / Профиль</a></li>
+                    <li class="nav-item"><a id="nav-signup" class="nav-link rounded px-xl-2 fw-semibold" href="signup.html">Регистрация</a></li>
+                    <li class="nav-item"><a id="nav-login" class="nav-link rounded px-xl-2 fw-semibold" href="login.html">Войти</a></li>
+                    <li class="nav-item nav-tools ms-xl-2 mt-2 mt-xl-0">
+                        <button type="button" id="themeToggle" class="btn btn-outline-primary btn-sm" aria-label="Переключить тему: день / ночь" title="День / Ночь">☀️</button>
+                        <button type="button" id="soundToggle" class="btn btn-outline-primary btn-sm" aria-label="Включить или выключить звуки" title="Звук" aria-pressed="true">🔊</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="content" class="container px-3 py-4 py-lg-5 mt-lg-4">
+
+        <h1 id="page-heading" class="text-center text-brand mb-2">Наша команда тренеров</h1>
+        <p class="text-center text-body-secondary mb-4">Профессиональные наставники помогут вам достичь результатов!</p>
+
+        <!-- Кнопки фильтрации с использованием Switch Statements в JS -->
+        <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+            <button id="trainer-filter-all" class="btn btn-outline-primary btn-sm filter-btn active-filter" data-category="all">Все тренеры</button>
+            <button id="trainer-filter-strength" class="btn btn-outline-primary btn-sm filter-btn" data-category="strength">Силовой тренинг</button>
+            <button id="trainer-filter-crossfit" class="btn btn-outline-primary btn-sm filter-btn" data-category="crossfit">Кроссфит</button>
+            <button id="trainer-filter-yoga" class="btn btn-outline-primary btn-sm filter-btn" data-category="yoga">Йога и Пилатес</button>
+        </div>
+
+        <div class="search-wrap">
+            <input type="search" id="trainerSearch" class="form-control" placeholder="Поиск тренера или направления..." autocomplete="off" aria-label="Поиск тренеров">
+            <ul id="suggestions" role="listbox"></ul>
+        </div>
+        <p id="noResults">Тренеры не найдены</p>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 mb-4" id="trainersContainer">
+            <!-- Trainer 1 -->
+            <div id="trainer-card-1" class="col trainer-card-col" data-category="strength">
+                <article class="card h-100 text-center">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/trainer-1.jpg" class="lazy card-img-top trainer-photo" alt="Тренер Бейсенбек Нурислам">
+                    <div class="card-body">
+                        <h2 class="card-title h5 text-brand">Бейсенбек Нурислам</h2>
+                        <p class="card-text mb-2"><strong>Специализация:</strong> Силовой тренинг</p>
+                        <ul class="list-unstyled text-body-secondary small mb-3">
+                            <li>Опыт работы: 6 лет</li>
+                            <li>Мастер спорта по пауэрлифтингу</li>
+                        </ul>
+                        
+                        <!-- Интерактивный рейтинг звездочками (DOM & querySelectorAll) -->
+                        <div class="mb-3">
+                            <span class="small text-body-secondary d-block mb-1">Оценить тренера:</span>
+                            <div class="rating-stars" data-trainer="Нурислам Бейсенбек">
+                                <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="custom-accordion-header py-1 px-2 small text-center">Биография</div>
+                            <div class="custom-accordion-content small text-body-secondary p-2">
+                                Специализируется на наборе массы, увеличении силовых показателей и безопасной технике работы со штангой.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer py-3 bg-transparent">
+                        <a class="btn btn-outline-primary btn-sm w-100" href="profile.html">Записаться к тренеру</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Trainer 2 -->
+            <div id="trainer-card-2" class="col trainer-card-col" data-category="crossfit">
+                <article class="card h-100 text-center">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/trainer-3.jpg" class="lazy card-img-top trainer-photo" alt="Тренер Кайратов Аскар">
+                    <div class="card-body">
+                        <h2 class="card-title h5 text-brand">Кайратов Аскар</h2>
+                        <p class="card-text mb-2"><strong>Специализация:</strong> Кроссфит и силовой тренинг</p>
+                        <ul class="list-unstyled text-body-secondary small mb-3">
+                            <li>Опыт работы: 5 лет</li>
+                            <li>Сертифицированный тренер</li>
+                        </ul>
+
+                        <div class="mb-3">
+                            <span class="small text-body-secondary d-block mb-1">Оценить тренера:</span>
+                            <div class="rating-stars" data-trainer="Аскар Кайратов">
+                                <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="custom-accordion-header py-1 px-2 small text-center">Биография</div>
+                            <div class="custom-accordion-content small text-body-secondary p-2">
+                                Помогает развить выносливость, координацию и взрывную силу через интенсивные функциональные тренировки.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer py-3 bg-transparent">
+                        <a class="btn btn-outline-primary btn-sm w-100" href="profile.html">Записаться к тренеру</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Trainer 3 -->
+            <div id="trainer-card-3" class="col trainer-card-col" data-category="yoga">
+                <article class="card h-100 text-center">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/trainer-4.jpg" class="lazy card-img-top trainer-photo" alt="Тренер Жумабекова Алия">
+                    <div class="card-body">
+                        <h2 class="card-title h5 text-brand">Жумабекова Алия</h2>
+                        <p class="card-text mb-2"><strong>Специализация:</strong> Пилатес и Стретчинг</p>
+                        <ul class="list-unstyled text-body-secondary small mb-3">
+                            <li>Опыт работы: 3 года</li>
+                            <li>Инструктор по пилатесу</li>
+                        </ul>
+
+                        <div class="mb-3">
+                            <span class="small text-body-secondary d-block mb-1">Оценить тренера:</span>
+                            <div class="rating-stars" data-trainer="Алия Жумабекова">
+                                <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="custom-accordion-header py-1 px-2 small text-center">Биография</div>
+                            <div class="custom-accordion-content small text-body-secondary p-2">
+                                Эксперт по укреплению мышечного корсета, улучшению гибкости и снятию напряжения в спине после сидячей работы.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer py-3 bg-transparent">
+                        <a class="btn btn-outline-primary btn-sm w-100" href="profile.html">Записаться к тренеру</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Trainer 4 -->
+            <div id="trainer-card-4" class="col trainer-card-col" data-category="yoga">
+                <article class="card h-100 text-center">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/trainer-2.jpg" class="lazy card-img-top trainer-photo" alt="Тренер Турсынбаева Алина">
+                    <div class="card-body">
+                        <h2 class="card-title h5 text-brand">Турсынбаева Алина</h2>
+                        <p class="card-text mb-2"><strong>Специализация:</strong> Йога и Стретчинг</p>
+                        <ul class="list-unstyled text-body-secondary small mb-3">
+                            <li>Опыт работы: 4 года</li>
+                            <li>Инструктор хатха-йоги</li>
+                        </ul>
+
+                        <div class="mb-3">
+                            <span class="small text-body-secondary d-block mb-1">Оценить тренера:</span>
+                            <div class="rating-stars" data-trainer="Алина Турсынбаева">
+                                <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="custom-accordion-header py-1 px-2 small text-center">Биография</div>
+                            <div class="custom-accordion-content small text-body-secondary p-2">
+                                Практикует осознанный подход к движению, помогает обрести душевное равновесие и гармонию тела через йогу.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer py-3 bg-transparent">
+                        <a class="btn btn-outline-primary btn-sm w-100" href="profile.html">Записаться к тренеру</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <p id="averageRating" class="text-center text-brand fw-semibold" role="status"></p>
+
+        <!-- Демонстрация массивов и методов (Higher-Order Functions / map) -->
+        <section class="mt-5">
+            <h2 class="h4 text-center mb-3">Полезные советы от нашей команды</h2>
+            <div class="row" id="dynamicTipsContainer">
+                <!-- Динамически заполняется через JS (массивы + map) -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-body-tertiary border-top mt-auto py-4 text-center text-body-secondary small">
+        <div class="container px-sm-2">
+            <p class="mb-1">Разработчики: Shyndaly Bagnyr, Aitzhanova Aigerim, Shamshidin Aruzhan | Группа: SE-2502</p>
+            <p class="mb-1">Демо Media Queries (без Bootstrap): <a href="media-typography.html">Типографика</a> и <a href="media-cards.html">Карточки</a></p>
+            <p class="mb-0">&copy; 2026 HandsUp Fitness Club.</p>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/final.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+/* ======================================================================
+   HANDSUP FINAL PROJECT — EASY EDIT CSS
+   The original purple/pink colors are in css/style.css, unchanged.
+   This file styles only the new final-project features and improvements.
+   ====================================================================== */
+
+/* The hidden attribute must always beat component display styles. */
+[hidden] { display: none !important; }
+
+/* Reusable layout for the two new account pages. */
+.auth-shell { max-width: 540px; }
+.auth-form { border: 1px solid var(--hu-border); border-radius: 16px; box-shadow: 0 12px 36px var(--hu-shadow); }
+.auth-form .form-control { min-height: 44px; }
+.auth-form .invalid-feedback { min-height: 1.25rem; margin-top: 0.25rem; }
+.auth-form .is-invalid { border-color: #ed4b70; }
+.auth-form .is-valid { border-color: #36a783; }
+.eyebrow { color: var(--hu-accent-text); font-size: 0.78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+
+/* Profile is an independent section so the booking form is left unchanged. */
+#account-panel { border-color: var(--hu-border); background: var(--hu-surface); }
+.account-grid dt { color: var(--hu-accent-text); }
+.account-grid dd { overflow-wrap: anywhere; }
+#logout-btn { transition: transform .2s ease, box-shadow .2s ease; }
+#logout-btn:hover { transform: translateY(-2px); }
+
+/* External API cards adapt from a horizontal row to a mobile stack. */
+.weather-panel { border: 1px solid var(--hu-border); background: var(--hu-surface); }
+.weather-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+.weather-stat { background: var(--hu-surface-2); border: 1px solid var(--hu-border); border-radius: 14px; padding: 1.15rem .8rem; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .25rem; }
+.weather-stat strong { font-size: clamp(1.1rem, 2.4vw, 1.6rem); color: var(--hu-accent-text); }
+.weather-symbol { font-size: 1.5rem; }
+
+/* More comfortable mobile navigation and forms. */
+img { max-width: 100%; }
+.card, .navbar, .table-responsive { min-width: 0; }
+.nav-link, .btn, .auth-form input { transition: box-shadow .2s ease, transform .2s ease, background-color .2s ease; }
+.btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 18px var(--hu-shadow); }
+:focus-visible { outline: 3px solid var(--hu-highlight); outline-offset: 3px; }
+#weather-refresh-btn:disabled { opacity: .65; cursor: wait; }
+
+@media (max-width: 575px) {
+    .weather-stats { grid-template-columns: 1fr; gap: .65rem; }
+    .weather-stat { flex-direction: row; justify-content: space-between; text-align: left; padding: .75rem 1rem; }
+    .auth-form { padding: 1.1rem !important; }
+    .navbar .nav-link { padding: .65rem .75rem; }
+    #account-panel { padding: 1rem !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .btn, .nav-link, .auth-form input { transition: none; }
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; }
+}

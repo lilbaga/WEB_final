@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HandsUp Fitness | Абонементы</title>
+    <meta name="description" content="Абонементы HandsUp Fitness Club: цены, сроки действия, промокод и ответы на частые вопросы.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/final.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <a class="visually-hidden-focusable btn btn-primary position-absolute top-0 start-0 m-2 z-3" href="#content">Перейти к содержимому</a>
+
+    <nav class="navbar navbar-expand-xxl bg-body-tertiary sticky-top border-bottom" aria-label="Основная навигация">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">HandsUp <span class="text-brand">Fitness</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-xl-0 gap-xl-1">
+                    <li class="nav-item"><a id="nav-home" class="nav-link rounded px-xl-3 fw-semibold" href="index.html">Главная</a></li>
+                    <li class="nav-item"><a id="nav-pricing" class="nav-link active rounded px-xl-3 fw-semibold" aria-current="page" href="pricing.html">Абонементы</a></li>
+                    <li class="nav-item"><a id="nav-schedule" class="nav-link rounded px-xl-3 fw-semibold" href="schedule.html">Расписание</a></li>
+                    <li class="nav-item"><a id="nav-branches" class="nav-link rounded px-xl-3 fw-semibold" href="branches.html">Филиалы</a></li>
+                    <li class="nav-item"><a id="nav-trainers" class="nav-link rounded px-xl-3 fw-semibold" href="trainers.html">Тренеры</a></li>
+                    <li class="nav-item"><a id="nav-profile" class="nav-link rounded px-xl-3 fw-semibold" href="profile.html">Запись / Профиль</a></li>
+                    <li class="nav-item"><a id="nav-signup" class="nav-link rounded px-xl-2 fw-semibold" href="signup.html">Регистрация</a></li>
+                    <li class="nav-item"><a id="nav-login" class="nav-link rounded px-xl-2 fw-semibold" href="login.html">Войти</a></li>
+                    <li class="nav-item nav-tools ms-xl-2 mt-2 mt-xl-0">
+                        <button type="button" id="themeToggle" class="btn btn-outline-primary btn-sm" aria-label="Переключить тему: день / ночь" title="День / Ночь">☀️</button>
+                        <button type="button" id="soundToggle" class="btn btn-outline-primary btn-sm" aria-label="Включить или выключить звуки" title="Звук" aria-pressed="true">🔊</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="content" class="container px-3 py-4 py-lg-5 mt-lg-4">
+
+        <h1 id="page-heading" class="text-center text-brand mb-4">Выбери свой абонемент</h1>
+
+        <div class="table-responsive border rounded-3 mb-4">
+            <table class="table table-striped table-hover align-middle text-center mb-0">
+                <caption class="visually-hidden">Виды абонементов, состав, срок действия и цена</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Тип абонемента</th>
+                        <th scope="col">Что включено</th>
+                        <th scope="col">Срок действия</th>
+                        <th scope="col">Цена</th>
+                        <th scope="col">Действие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="plan-row-1">
+                        <th scope="row">Разовый</th>
+                        <td>Посещение тренажерного зала 1 раз</td>
+                        <td>1 день</td>
+                        <td class="text-nowrap">3 000 ₸</td>
+                        <td><button id="plan-select-1" type="button" class="btn btn-primary btn-sm">Выбрать</button></td>
+                    </tr>
+                    <tr id="plan-row-2">
+                        <th scope="row">Базовый 1 месяц</th>
+                        <td>Тренажерный зал + Группы</td>
+                        <td>1 месяц</td>
+                        <td class="text-nowrap">20 000 ₸</td>
+                        <td><button id="plan-select-2" type="button" class="btn btn-primary btn-sm">Выбрать</button></td>
+                    </tr>
+                    <tr id="plan-row-3">
+                        <th scope="row">Безлимит 3 месяца</th>
+                        <td>Зал, Группы, Бассейн и СПА</td>
+                        <td>3 месяца</td>
+                        <td class="text-nowrap">50 000 ₸</td>
+                        <td><button id="plan-select-3" type="button" class="btn btn-primary btn-sm">Выбрать</button></td>
+                    </tr>
+                    <tr id="plan-row-4">
+                        <th scope="row">Годовой VIP</th>
+                        <td>Полный доступ + Персональный тренер</td>
+                        <td>12 месяцев</td>
+                        <td class="text-nowrap">150 000 ₸</td>
+                        <td><button id="plan-select-4" type="button" class="btn btn-warning btn-sm">Выбрать</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- A4 Task 3: popup form trigger -->
+        <section class="text-center mb-4">
+            <button type="button" id="openPopupBtn" class="btn btn-outline-primary btn-lg">Запросить консультацию (Popup)</button>
+        </section>
+
+        <!-- A4 Task 3: hidden popup (closes by X, by click outside, or Esc) -->
+        <div id="subscriptionPopupOverlay" class="popup-overlay" aria-hidden="true">
+            <div class="popup-content card p-4 position-relative" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+                <button type="button" id="closePopupBtn" class="btn-close position-absolute top-0 end-0 m-3" aria-label="Закрыть"></button>
+                <h3 id="popupTitle" class="h4 text-brand mb-3">Задать вопрос по абонементу</h3>
+                <p class="text-body-secondary small mb-3">Оставьте свои контакты, и наш менеджер перезвонит вам в течение 10 минут.</p>
+                <form id="popupContactForm" novalidate>
+                    <div class="mb-3 text-start">
+                        <label for="clientName" class="form-label">Ваше имя</label>
+                        <input type="text" class="form-control" id="clientName" placeholder="Введите имя" autocomplete="name" data-validate="name">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3 text-start">
+                        <label for="clientPhone" class="form-label">Номер телефона</label>
+                        <div class="input-group">
+                            <span class="input-group-text">+7</span>
+                            <input type="tel" class="form-control" id="clientPhone" placeholder="(7XX) XXX-XX-XX" inputmode="numeric" autocomplete="tel-national" data-validate="phone">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Отправить заявку</button>
+                </form>
+                <div id="popupResult" class="mt-3" role="status"></div>
+            </div>
+        </div>
+
+        <section class="text-center mt-4 mt-lg-5" aria-labelledby="promo-title">
+            <h2 id="promo-title" class="h4 mb-3">Промокод на скидку</h2>
+            <div class="promo-box">
+                <span class="copy-snippet">HANDSUP2026</span>
+            </div>
+        </section>
+
+        <section class="mt-4 mt-lg-5" aria-labelledby="faq-search-title">
+            <h2 id="faq-search-title" class="h4 text-center mb-3">Частые вопросы об абонементах</h2>
+            <div class="search-wrap">
+                <input type="search" id="faqSearch" class="form-control" placeholder="Поиск по вопросам..." autocomplete="off" aria-label="Поиск по вопросам">
+            </div>
+            <p id="faqCount" class="text-center" role="status"></p>
+            <div id="faq" class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="faq-item"><h3 class="h6 text-brand">Как купить абонемент?</h3><p class="mb-0">Выберите подходящий абонемент в таблице выше и оформите заявку на странице записи или в любом из наших филиалов.</p></div>
+                    <div class="faq-item"><h3 class="h6 text-brand">Можно ли заморозить абонемент?</h3><p class="mb-0">Да, абонемент можно заморозить на срок от 14 до 30 дней через личный профиль или у администратора филиала.</p></div>
+                    <div class="faq-item"><h3 class="h6 text-brand">Есть ли пробная тренировка?</h3><p class="mb-0">Первая пробная тренировка включает экскурсию по клубу, консультацию инструктора и одно занятие на выбор.</p></div>
+                    <div class="faq-item"><h3 class="h6 text-brand">Что входит в годовой VIP?</h3><p class="mb-0">Полный доступ ко всем зонам клуба, бассейну, СПА и персональный тренер на весь срок абонемента.</p></div>
+                    <div class="faq-item"><h3 class="h6 text-brand">Как использовать промокод?</h3><p class="mb-0">Скопируйте промокод кнопкой выше и назовите его администратору при оплате абонемента, чтобы получить скидку.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center mt-4 mt-lg-5" aria-labelledby="help-title">
+            <h2 id="help-title" class="h4 mb-3">Не знаете, что выбрать?</h2>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-4">
+                <a class="btn btn-primary btn-lg" href="profile.html">Записаться на пробную тренировку</a>
+                <button type="button" class="btn btn-secondary btn-lg" disabled>Семейный абонемент — скоро</button>
+            </div>
+            <div class="btn-group" role="group" aria-label="Полезные разделы сайта">
+                <a class="btn btn-outline-primary" href="schedule.html">Расписание</a>
+                <a class="btn btn-outline-primary" href="branches.html">Филиалы</a>
+                <a class="btn btn-outline-primary" href="trainers.html">Тренеры</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-body-tertiary border-top mt-auto py-4 text-center text-body-secondary small">
+        <div class="container px-sm-2">
+            <p class="mb-1">Разработчики: Shyndaly Bagnyr, Aitzhanova Aigerim, Shamshidin Aruzhan | Группа: SE-2502</p>
+            <p class="mb-1">Демо Media Queries (без Bootstrap): <a href="media-typography.html">Типографика</a> и <a href="media-cards.html">Карточки</a></p>
+            <p class="mb-0">&copy; 2026 HandsUp Fitness Club.</p>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/final.js" defer></script>
+</body>
+</html>
